@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_118dbc79dd4cd72ce4b84f1ec1da9b0b {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; bottom: 40px; left: 40px; width: 280px; border:2px solid grey; z-index:9999; font-size:13px; background:white; padding:6px; border-radius:8px;">
+<b>Legend</b><br><span style="color:blue;">&#9679;</span> Existing Industrial Site<br><span style="color:red;">&#9679;</span> New Industrial Project<br><span style="color:purple;">&#9679;</span> Food & Beverage<br><span style="color:brown;">&#9679;</span> Wood Processing<br><span style="color:darkgreen;">&#9679;</span> Energy & Power<br><span style="color:cadetblue;">&#9679;</span> Water & Wastewater<br><span style="color:orange;">&#9679;</span> Data Centre<br><span style="color:black;">&#9679;</span> Transport & Workshops<br><span style="color:green;">&#9679;</span> Priority (&lt;100 km from PME)<br>
+</div>
+    
+            <div class="folium-map" id="map_118dbc79dd4cd72ce4b84f1ec1da9b0b" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_118dbc79dd4cd72ce4b84f1ec1da9b0b = L.map(
+                "map_118dbc79dd4cd72ce4b84f1ec1da9b0b",
+                {
+                    center: [-38.0, 175.3],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 6,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_2c5e4d3ab0b6355088c48fd247fd1850 = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+            var circle_marker_776cbeb69bfe433c6f5ad7d722e440d1 = L.circleMarker(
+                [-37.143, 174.743],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+        var popup_675d35ea540beb86dbdc7e0df9a1da2a = L.popup({"maxWidth": "100%"});
+
+        
+            var html_a6b308e8593c89d70a3f7bebab2fed9f = $(`<div id="html_a6b308e8593c89d70a3f7bebab2fed9f" style="width: 100.0%; height: 100.0%;"><b>New Zealand Steel – Glenbrook Steel Mill</b><br><b>Company:</b> New Zealand Steel (BlueScope)<br><b>Sector:</b> Steel<br><b>Opportunity size (est.):</b> NZ$3 m<br><b>Timeline:</b> Ongoing maintenance & minor CAPEX<br><b>Status:</b> Fully integrated steel mill (670k t/yr) – undergoing decarbonisation plans</div>`)[0];
+            popup_675d35ea540beb86dbdc7e0df9a1da2a.setContent(html_a6b308e8593c89d70a3f7bebab2fed9f);
+        
+
+        circle_marker_776cbeb69bfe433c6f5ad7d722e440d1.bindPopup(popup_675d35ea540beb86dbdc7e0df9a1da2a)
+        ;
+
+        
+    
+    
+            circle_marker_776cbeb69bfe433c6f5ad7d722e440d1.bindTooltip(
+                `<div>
+                     New Zealand Steel – Glenbrook Steel Mill (New Zealand Steel (BlueScope))
+Scope ≈ NZ$3 m | Ongoing maintenance & minor CAPEX
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_37cde2d67d6d663a685d19c20ab5d70e = L.circleMarker(
+                [-35.845, 174.551],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+        var popup_799decf26f169229d4392f5cdf2ecbd9 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_ae5265c94ea0582dbf5d37c25b3b09f1 = $(`<div id="html_ae5265c94ea0582dbf5d37c25b3b09f1" style="width: 100.0%; height: 100.0%;"><b>Channel Infrastructure – Marsden Point</b><br><b>Company:</b> Channel Infrastructure NZ<br><b>Sector:</b> Fuel Import Terminal<br><b>Opportunity size (est.):</b> NZ$3 m<br><b>Timeline:</b> Ongoing maintenance & minor CAPEX<br><b>Status:</b> Largest fuel import terminal; supplies ~40% of NZ fuel</div>`)[0];
+            popup_799decf26f169229d4392f5cdf2ecbd9.setContent(html_ae5265c94ea0582dbf5d37c25b3b09f1);
+        
+
+        circle_marker_37cde2d67d6d663a685d19c20ab5d70e.bindPopup(popup_799decf26f169229d4392f5cdf2ecbd9)
+        ;
+
+        
+    
+    
+            circle_marker_37cde2d67d6d663a685d19c20ab5d70e.bindTooltip(
+                `<div>
+                     Channel Infrastructure – Marsden Point (Channel Infrastructure NZ)
+Scope ≈ NZ$3 m | Ongoing maintenance & minor CAPEX
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_694ebea6ee4b2dd0ec7fbc428ed50ac9 = L.circleMarker(
+                [-39.004, 174.196],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+        var popup_b403cdfcc196ac84e415515aa3763a0b = L.popup({"maxWidth": "100%"});
+
+        
+            var html_53ab0fab685f178c467fe1fd2e6adb9b = $(`<div id="html_53ab0fab685f178c467fe1fd2e6adb9b" style="width: 100.0%; height: 100.0%;"><b>Methanex Methanol Plants – Motunui & Waitara Valley</b><br><b>Company:</b> Methanex New Zealand<br><b>Sector:</b> Petrochemical (Methanol)<br><b>Opportunity size (est.):</b> NZ$3 m<br><b>Timeline:</b> Ongoing maintenance & minor CAPEX<br><b>Status:</b> Only NZ methanol producer; exports ~95% output</div>`)[0];
+            popup_b403cdfcc196ac84e415515aa3763a0b.setContent(html_53ab0fab685f178c467fe1fd2e6adb9b);
+        
+
+        circle_marker_694ebea6ee4b2dd0ec7fbc428ed50ac9.bindPopup(popup_b403cdfcc196ac84e415515aa3763a0b)
+        ;
+
+        
+    
+    
+            circle_marker_694ebea6ee4b2dd0ec7fbc428ed50ac9.bindTooltip(
+                `<div>
+                     Methanex Methanol Plants – Motunui & Waitara Valley (Methanex New Zealand)
+Scope ≈ NZ$3 m | Ongoing maintenance & minor CAPEX
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_8a37418524bada1b8df049e65dc1b85c = L.circleMarker(
+                [-39.468, 174.139],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+        var popup_7e63f7ebbf75458cd7d10e1cbb05eb18 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_524140436e90e39e9e87ea3f76f44210 = $(`<div id="html_524140436e90e39e9e87ea3f76f44210" style="width: 100.0%; height: 100.0%;"><b>Ballance Kapuni Ammonia‑Urea Plant</b><br><b>Company:</b> Ballance Agri‑Nutrients<br><b>Sector:</b> Fertiliser (Ammonia/Urea)<br><b>Opportunity size (est.):</b> NZ$3 m<br><b>Timeline:</b> Ongoing maintenance & minor CAPEX<br><b>Status:</b> NZ’s only ammonia‑urea plant; natural‑gas fed</div>`)[0];
+            popup_7e63f7ebbf75458cd7d10e1cbb05eb18.setContent(html_524140436e90e39e9e87ea3f76f44210);
+        
+
+        circle_marker_8a37418524bada1b8df049e65dc1b85c.bindPopup(popup_7e63f7ebbf75458cd7d10e1cbb05eb18)
+        ;
+
+        
+    
+    
+            circle_marker_8a37418524bada1b8df049e65dc1b85c.bindTooltip(
+                `<div>
+                     Ballance Kapuni Ammonia‑Urea Plant (Ballance Agri‑Nutrients)
+Scope ≈ NZ$3 m | Ongoing maintenance & minor CAPEX
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f37e4c3a5ef89813d1872c5d9e0e08ef = L.circleMarker(
+                [-38.276, 175.919],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+        var popup_75242a27bf04c7a702a614746c524010 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_0f8c24dacf3e01a05cd1d57a24a6cbd1 = $(`<div id="html_0f8c24dacf3e01a05cd1d57a24a6cbd1" style="width: 100.0%; height: 100.0%;"><b>Oji Fibre Solutions – Kinleith Mill</b><br><b>Company:</b> Oji Fibre Solutions<br><b>Sector:</b> Pulp & Paper<br><b>Opportunity size (est.):</b> NZ$3 m<br><b>Timeline:</b> Ongoing maintenance & minor CAPEX<br><b>Status:</b> Kraft pulp & packaging papers; proposed closure of paper line mid‑2025</div>`)[0];
+            popup_75242a27bf04c7a702a614746c524010.setContent(html_0f8c24dacf3e01a05cd1d57a24a6cbd1);
+        
+
+        circle_marker_f37e4c3a5ef89813d1872c5d9e0e08ef.bindPopup(popup_75242a27bf04c7a702a614746c524010)
+        ;
+
+        
+    
+    
+            circle_marker_f37e4c3a5ef89813d1872c5d9e0e08ef.bindTooltip(
+                `<div>
+                     Oji Fibre Solutions – Kinleith Mill (Oji Fibre Solutions)
+Scope ≈ NZ$3 m | Ongoing maintenance & minor CAPEX
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_5516da20d29903d7334dcb010b0e1b2b = L.circleMarker(
+                [-38.115, 176.708],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+        var popup_94d894e157be374ff6e566248c4d8f02 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_5c6258b83ca6e9d1f4bb257af9446fa2 = $(`<div id="html_5c6258b83ca6e9d1f4bb257af9446fa2" style="width: 100.0%; height: 100.0%;"><b>Tasman Pulp & Paper Mill – Kawerau</b><br><b>Company:</b> Oji Fibre Solutions / Essity<br><b>Sector:</b> Pulp & Paper<br><b>Opportunity size (est.):</b> NZ$3 m<br><b>Timeline:</b> Ongoing maintenance & minor CAPEX<br><b>Status:</b> Largest employer in Eastern BoP; kraft pulp & tissue production</div>`)[0];
+            popup_94d894e157be374ff6e566248c4d8f02.setContent(html_5c6258b83ca6e9d1f4bb257af9446fa2);
+        
+
+        circle_marker_5516da20d29903d7334dcb010b0e1b2b.bindPopup(popup_94d894e157be374ff6e566248c4d8f02)
+        ;
+
+        
+    
+    
+            circle_marker_5516da20d29903d7334dcb010b0e1b2b.bindTooltip(
+                `<div>
+                     Tasman Pulp & Paper Mill – Kawerau (Oji Fibre Solutions / Essity)
+Scope ≈ NZ$3 m | Ongoing maintenance & minor CAPEX
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f0c37cdbe743eddd7b1462ed8b9e09d9 = L.circleMarker(
+                [-35.784, 174.27],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+        var popup_5e2cd9e9da0c60b7d8515a5d508c5937 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_4f732351f6361043c901d57294e0014a = $(`<div id="html_4f732351f6361043c901d57294e0014a" style="width: 100.0%; height: 100.0%;"><b>Golden Bay Cement – Portland Plant</b><br><b>Company:</b> Golden Bay Cement (Fletcher Building)<br><b>Sector:</b> Cement<br><b>Opportunity size (est.):</b> NZ$3 m<br><b>Timeline:</b> Ongoing maintenance & minor CAPEX<br><b>Status:</b> NZ’s only fully integrated cement plant (967k t/yr capacity)</div>`)[0];
+            popup_5e2cd9e9da0c60b7d8515a5d508c5937.setContent(html_4f732351f6361043c901d57294e0014a);
+        
+
+        circle_marker_f0c37cdbe743eddd7b1462ed8b9e09d9.bindPopup(popup_5e2cd9e9da0c60b7d8515a5d508c5937)
+        ;
+
+        
+    
+    
+            circle_marker_f0c37cdbe743eddd7b1462ed8b9e09d9.bindTooltip(
+                `<div>
+                     Golden Bay Cement – Portland Plant (Golden Bay Cement (Fletcher Building))
+Scope ≈ NZ$3 m | Ongoing maintenance & minor CAPEX
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f3ea2da01c06c4661ed13760a377df97 = L.circleMarker(
+                [-39.325, 176.933],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+        var popup_f54dd5085bd9c33766f22d9e878d5d7e = L.popup({"maxWidth": "100%"});
+
+        
+            var html_aca89c7601dd956982990d1a88470be4 = $(`<div id="html_aca89c7601dd956982990d1a88470be4" style="width: 100.0%; height: 100.0%;"><b>Pan Pac Forest Products – Whirinaki</b><br><b>Company:</b> Pan Pac Forest Products<br><b>Sector:</b> Pulp & Lumber<br><b>Opportunity size (est.):</b> NZ$3 m<br><b>Timeline:</b> Ongoing maintenance & minor CAPEX<br><b>Status:</b> Integrated sawmill & pulp mill; exports to Asia</div>`)[0];
+            popup_f54dd5085bd9c33766f22d9e878d5d7e.setContent(html_aca89c7601dd956982990d1a88470be4);
+        
+
+        circle_marker_f3ea2da01c06c4661ed13760a377df97.bindPopup(popup_f54dd5085bd9c33766f22d9e878d5d7e)
+        ;
+
+        
+    
+    
+            circle_marker_f3ea2da01c06c4661ed13760a377df97.bindTooltip(
+                `<div>
+                     Pan Pac Forest Products – Whirinaki (Pan Pac Forest Products)
+Scope ≈ NZ$3 m | Ongoing maintenance & minor CAPEX
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_9ae4cc84174c55b5f9e14315327a26bf = L.circleMarker(
+                [-37.672, 176.183],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+        var popup_e666b17d504e48a021a655fc4c70c050 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_0c20775532a2233e6d2b16d9e3c22fe3 = $(`<div id="html_0c20775532a2233e6d2b16d9e3c22fe3" style="width: 100.0%; height: 100.0%;"><b>Port of Tauranga – Mount Maunganui</b><br><b>Company:</b> Port of Tauranga Ltd<br><b>Sector:</b> Port & Logistics<br><b>Opportunity size (est.):</b> NZ$3 m<br><b>Timeline:</b> Ongoing maintenance & minor CAPEX<br><b>Status:</b> NZ’s largest port by volume; major industrial logistics hub</div>`)[0];
+            popup_e666b17d504e48a021a655fc4c70c050.setContent(html_0c20775532a2233e6d2b16d9e3c22fe3);
+        
+
+        circle_marker_9ae4cc84174c55b5f9e14315327a26bf.bindPopup(popup_e666b17d504e48a021a655fc4c70c050)
+        ;
+
+        
+    
+    
+            circle_marker_9ae4cc84174c55b5f9e14315327a26bf.bindTooltip(
+                `<div>
+                     Port of Tauranga – Mount Maunganui (Port of Tauranga Ltd)
+Scope ≈ NZ$3 m | Ongoing maintenance & minor CAPEX
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_0d341c541375f48c7edd76c249d6338c = L.circleMarker(
+                [-37.143, 174.743],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+        var popup_1433f70ebdd6506385b1efab57e0fc25 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_5d75babf9a3bd344153c102e3d52ec9e = $(`<div id="html_5d75babf9a3bd344153c102e3d52ec9e" style="width: 100.0%; height: 100.0%;"><b>Glenbrook Electric Arc Furnace Project</b><br><b>Company:</b> New Zealand Steel (BlueScope)<br><b>Sector:</b> Steel Decarbonisation<br><b>Opportunity size (est.):</b> NZ$60 m<br><b>Timeline:</b> 2024–26<br><b>Status:</b> NZ$300 m EAF to cut 800k t CO₂/yr; completion 2026</div>`)[0];
+            popup_1433f70ebdd6506385b1efab57e0fc25.setContent(html_5d75babf9a3bd344153c102e3d52ec9e);
+        
+
+        circle_marker_0d341c541375f48c7edd76c249d6338c.bindPopup(popup_1433f70ebdd6506385b1efab57e0fc25)
+        ;
+
+        
+    
+    
+            circle_marker_0d341c541375f48c7edd76c249d6338c.bindTooltip(
+                `<div>
+                     Glenbrook Electric Arc Furnace Project (New Zealand Steel (BlueScope))
+Scope ≈ NZ$60 m | 2024–26
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_d74f24bf4a6c2f62c16505aacb4424a2 = L.circleMarker(
+                [-39.468, 174.139],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+        var popup_a64bdeb3cdcdf3104e1c80ee10fca078 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_d59c5ff1c22326585a86ec039e4bd357 = $(`<div id="html_d59c5ff1c22326585a86ec039e4bd357" style="width: 100.0%; height: 100.0%;"><b>Kapuni Green Hydrogen & Ammonia Upgrade</b><br><b>Company:</b> Hiringa Energy / Ballance<br><b>Sector:</b> Green Hydrogen / Fertiliser<br><b>Opportunity size (est.):</b> NZ$12 m<br><b>Timeline:</b> Construction 2024–25<br><b>Status:</b> 4‑turbine wind + electrolysis plant; full ops 2025</div>`)[0];
+            popup_a64bdeb3cdcdf3104e1c80ee10fca078.setContent(html_d59c5ff1c22326585a86ec039e4bd357);
+        
+
+        circle_marker_d74f24bf4a6c2f62c16505aacb4424a2.bindPopup(popup_a64bdeb3cdcdf3104e1c80ee10fca078)
+        ;
+
+        
+    
+    
+            circle_marker_d74f24bf4a6c2f62c16505aacb4424a2.bindTooltip(
+                `<div>
+                     Kapuni Green Hydrogen & Ammonia Upgrade (Hiringa Energy / Ballance)
+Scope ≈ NZ$12 m | Construction 2024–25
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_b6fd370073e569bd3799d27741aff5b7 = L.circleMarker(
+                [-38.668, 176.086],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+        var popup_83daaa3f83efccb1233a72370656df14 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_a314752d79d6d5c6b8e2f77969ae97f4 = $(`<div id="html_a314752d79d6d5c6b8e2f77969ae97f4" style="width: 100.0%; height: 100.0%;"><b>Tauhara Geothermal Power Station</b><br><b>Company:</b> Contact Energy<br><b>Sector:</b> Renewable Energy – Geothermal<br><b>Opportunity size (est.):</b> NZ$25 m<br><b>Timeline:</b> 2024–25<br><b>Status:</b> 168 MW geo plant; staged openings 2024–25</div>`)[0];
+            popup_83daaa3f83efccb1233a72370656df14.setContent(html_a314752d79d6d5c6b8e2f77969ae97f4);
+        
+
+        circle_marker_b6fd370073e569bd3799d27741aff5b7.bindPopup(popup_83daaa3f83efccb1233a72370656df14)
+        ;
+
+        
+    
+    
+            circle_marker_b6fd370073e569bd3799d27741aff5b7.bindTooltip(
+                `<div>
+                     Tauhara Geothermal Power Station (Contact Energy)
+Scope ≈ NZ$25 m | 2024–25
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_a0d85abda9b2925a1088851ed1b066bc = L.circleMarker(
+                [-38.097, 176.731],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+        var popup_78c6aacaf543a193c8faf76ab8db6202 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_e5a41c4fd704712c8ead4a0a30a37104 = $(`<div id="html_e5a41c4fd704712c8ead4a0a30a37104" style="width: 100.0%; height: 100.0%;"><b>Foresta Kawerau Bio‑fuels & Pine Chemicals Plant</b><br><b>Company:</b> Foresta Group / Putauaki Trust JV<br><b>Sector:</b> Bio‑fuels / Biomass<br><b>Opportunity size (est.):</b> NZ$20 m<br><b>Timeline:</b> 2024 fast‑track; build 2025–26<br><b>Status:</b> NZ$300 m torrefied wood pellet & pine‑chem plant; fast‑track consent 2024, COD 2026</div>`)[0];
+            popup_78c6aacaf543a193c8faf76ab8db6202.setContent(html_e5a41c4fd704712c8ead4a0a30a37104);
+        
+
+        circle_marker_a0d85abda9b2925a1088851ed1b066bc.bindPopup(popup_78c6aacaf543a193c8faf76ab8db6202)
+        ;
+
+        
+    
+    
+            circle_marker_a0d85abda9b2925a1088851ed1b066bc.bindTooltip(
+                `<div>
+                     Foresta Kawerau Bio‑fuels & Pine Chemicals Plant (Foresta Group / Putauaki Trust JV)
+Scope ≈ NZ$20 m | 2024 fast‑track; build 2025–26
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_b4ab058511a5b8d6799a812d33ee3b34 = L.circleMarker(
+                [-38.336, 175.867],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+        var popup_a47a011fe5cd5402dfc3058f81b66192 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_cd481e5378743692d519e95054742ce4 = $(`<div id="html_cd481e5378743692d519e95054742ce4" style="width: 100.0%; height: 100.0%;"><b>Fonterra Lichfield Mega Dryer & Site</b><br><b>Company:</b> Fonterra<br><b>Sector:</b> Dairy Processing<br><b>Opportunity size (est.):</b> NZ$15 m<br><b>Timeline:</b> Upgrade works 2025–26<br><b>Project CAPEX:</b> NZ$400.0 m<br><b>RFQ/Bid:</b> N/A (operational)<br><b>Prime EPC:</b> GEA Process Engineering<br><b>Status:</b> 400 mℎ milk powder dryer (commissioned 2016) – ongoing expansion; high stainless demand</div>`)[0];
+            popup_a47a011fe5cd5402dfc3058f81b66192.setContent(html_cd481e5378743692d519e95054742ce4);
+        
+
+        circle_marker_b4ab058511a5b8d6799a812d33ee3b34.bindPopup(popup_a47a011fe5cd5402dfc3058f81b66192)
+        ;
+
+        
+    
+    
+            circle_marker_b4ab058511a5b8d6799a812d33ee3b34.bindTooltip(
+                `<div>
+                     Fonterra Lichfield Mega Dryer & Site (Fonterra)
+Scope ≈ NZ$15 m | Upgrade works 2025–26
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f4f1a0e892f82bc0bca1e124fffcc2c1 = L.circleMarker(
+                [-37.734, 175.233],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+        var popup_21f47a4b85b9e5130940fd7fa5e81371 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_9104e944a2145c8855fb188a6ac90c04 = $(`<div id="html_9104e944a2145c8855fb188a6ac90c04" style="width: 100.0%; height: 100.0%;"><b>Fonterra Te Rapa Dairy Complex</b><br><b>Company:</b> Fonterra<br><b>Sector:</b> Dairy Processing<br><b>Opportunity size (est.):</b> NZ$3 m<br><b>Timeline:</b> Ongoing maintenance & minor CAPEX<br><b>RFQ/Bid:</b> Rolling 2024‑26<br><b>Prime EPC:</b> Fonterra Assets & Engineering / Various<br><b>Status:</b> Cheese, UHT and powder lines – multi‑year decarbonisation upgrades</div>`)[0];
+            popup_21f47a4b85b9e5130940fd7fa5e81371.setContent(html_9104e944a2145c8855fb188a6ac90c04);
+        
+
+        circle_marker_f4f1a0e892f82bc0bca1e124fffcc2c1.bindPopup(popup_21f47a4b85b9e5130940fd7fa5e81371)
+        ;
+
+        
+    
+    
+            circle_marker_f4f1a0e892f82bc0bca1e124fffcc2c1.bindTooltip(
+                `<div>
+                     Fonterra Te Rapa Dairy Complex (Fonterra)
+Scope ≈ NZ$3 m | Ongoing maintenance & minor CAPEX
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_1c95dab1ce239e4ac800570eaaf168fd = L.circleMarker(
+                [-39.57, 174.324],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+        var popup_b18fb705dbdf449b8040e3dd4a4ffb5a = L.popup({"maxWidth": "100%"});
+
+        
+            var html_4f894efbb9a15f844986a7798d1c0b84 = $(`<div id="html_4f894efbb9a15f844986a7798d1c0b84" style="width: 100.0%; height: 100.0%;"><b>Fonterra Whareroa Cool‑store Project</b><br><b>Company:</b> Fonterra<br><b>Sector:</b> Dairy Logistics<br><b>Opportunity size (est.):</b> NZ$3 m<br><b>Timeline:</b> Ongoing maintenance & minor CAPEX<br><b>Project CAPEX:</b> NZ$150.0 m<br><b>RFQ/Bid:</b> 2025<br><b>Prime EPC:</b> TBC<br><b>Status:</b> 150 mℎ temperature‑controlled cool‑store, COD 2026</div>`)[0];
+            popup_b18fb705dbdf449b8040e3dd4a4ffb5a.setContent(html_4f894efbb9a15f844986a7798d1c0b84);
+        
+
+        circle_marker_1c95dab1ce239e4ac800570eaaf168fd.bindPopup(popup_b18fb705dbdf449b8040e3dd4a4ffb5a)
+        ;
+
+        
+    
+    
+            circle_marker_1c95dab1ce239e4ac800570eaaf168fd.bindTooltip(
+                `<div>
+                     Fonterra Whareroa Cool‑store Project (Fonterra)
+Scope ≈ NZ$3 m | Ongoing maintenance & minor CAPEX
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_653faa68ac23a0cc03e68cebacd212ea = L.circleMarker(
+                [-37.545, 175.546],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+        var popup_65fbb78471ee75a20f7d92305d305ba7 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_28f3ccf5dba4c34c715b718534919e85 = $(`<div id="html_28f3ccf5dba4c34c715b718534919e85" style="width: 100.0%; height: 100.0%;"><b>Tatua Factory Expansion – Tatuanui</b><br><b>Company:</b> Tatua Co‑operative Dairy<br><b>Sector:</b> Dairy Processing<br><b>Opportunity size (est.):</b> NZ$8 m<br><b>Timeline:</b> 2025–26<br><b>RFQ/Bid:</b> 2025<br><b>Prime EPC:</b> TBC<br><b>Status:</b> Cream‑based products factory doubling capacity (announced 2024)</div>`)[0];
+            popup_65fbb78471ee75a20f7d92305d305ba7.setContent(html_28f3ccf5dba4c34c715b718534919e85);
+        
+
+        circle_marker_653faa68ac23a0cc03e68cebacd212ea.bindPopup(popup_65fbb78471ee75a20f7d92305d305ba7)
+        ;
+
+        
+    
+    
+            circle_marker_653faa68ac23a0cc03e68cebacd212ea.bindTooltip(
+                `<div>
+                     Tatua Factory Expansion – Tatuanui (Tatua Co‑operative Dairy)
+Scope ≈ NZ$8 m | 2025–26
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_80fa9d3d45c99605443a1564d29f3452 = L.circleMarker(
+                [-37.826, 175.521],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+        var popup_ee6994e4a0ffd033fde01f8fdf8e4f18 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_5a98a7359f716b4c703592aac455f571 = $(`<div id="html_5a98a7359f716b4c703592aac455f571" style="width: 100.0%; height: 100.0%;"><b>Open Country Waharoa Butter Plant</b><br><b>Company:</b> Open Country Dairy<br><b>Sector:</b> Dairy Processing<br><b>Opportunity size (est.):</b> NZ$6 m<br><b>Timeline:</b> 2024–25<br><b>RFQ/Bid:</b> 2024‑Q3<br><b>Prime EPC:</b> TBC<br><b>Status:</b> New butter plant & dryer upgrade, commissioning 2025</div>`)[0];
+            popup_ee6994e4a0ffd033fde01f8fdf8e4f18.setContent(html_5a98a7359f716b4c703592aac455f571);
+        
+
+        circle_marker_80fa9d3d45c99605443a1564d29f3452.bindPopup(popup_ee6994e4a0ffd033fde01f8fdf8e4f18)
+        ;
+
+        
+    
+    
+            circle_marker_80fa9d3d45c99605443a1564d29f3452.bindTooltip(
+                `<div>
+                     Open Country Waharoa Butter Plant (Open Country Dairy)
+Scope ≈ NZ$6 m | 2024–25
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_ac915f04bccb34a9a2e580e7237af724 = L.circleMarker(
+                [-38.192, 176.17],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+        var popup_3c2f89c216afee106c3850635c512f5d = L.popup({"maxWidth": "100%"});
+
+        
+            var html_76e0b6de42ee1e43c28b92a19140d001 = $(`<div id="html_76e0b6de42ee1e43c28b92a19140d001" style="width: 100.0%; height: 100.0%;"><b>Red Stag Timber Sawmill – Waipa</b><br><b>Company:</b> Red Stag Timber<br><b>Sector:</b> Sawmill & Lumber<br><b>Opportunity size (est.):</b> NZ$5 m<br><b>Timeline:</b> Ongoing 2025‑27<br><b>RFQ/Bid:</b> Rolling<br><b>Prime EPC:</b> Internal / vendors<br><b>Status:</b> Largest sawmill in NZ; on‑going kiln and planing upgrades</div>`)[0];
+            popup_3c2f89c216afee106c3850635c512f5d.setContent(html_76e0b6de42ee1e43c28b92a19140d001);
+        
+
+        circle_marker_ac915f04bccb34a9a2e580e7237af724.bindPopup(popup_3c2f89c216afee106c3850635c512f5d)
+        ;
+
+        
+    
+    
+            circle_marker_ac915f04bccb34a9a2e580e7237af724.bindTooltip(
+                `<div>
+                     Red Stag Timber Sawmill – Waipa (Red Stag Timber)
+Scope ≈ NZ$5 m | Ongoing 2025‑27
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_530027b0945cff98af2b52939c6119b5 = L.circleMarker(
+                [-37.559, 175.164],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+        var popup_c5154ace5e6b72678bc672df2d9140d0 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_877db60bb02eb5c209e300ccacbce1f1 = $(`<div id="html_877db60bb02eb5c209e300ccacbce1f1" style="width: 100.0%; height: 100.0%;"><b>Huntly Power Station Battery Storage</b><br><b>Company:</b> Genesis Energy<br><b>Sector:</b> Battery Storage<br><b>Opportunity size (est.):</b> NZ$7 m<br><b>Timeline:</b> 2024–26<br><b>Project CAPEX:</b> NZ$60.0 m<br><b>RFQ/Bid:</b> EPC awarded 2024<br><b>Prime EPC:</b> to be announced<br><b>Status:</b> 100 MW / 200 MWh BESS, FID 2024, COD 2026</div>`)[0];
+            popup_c5154ace5e6b72678bc672df2d9140d0.setContent(html_877db60bb02eb5c209e300ccacbce1f1);
+        
+
+        circle_marker_530027b0945cff98af2b52939c6119b5.bindPopup(popup_c5154ace5e6b72678bc672df2d9140d0)
+        ;
+
+        
+    
+    
+            circle_marker_530027b0945cff98af2b52939c6119b5.bindTooltip(
+                `<div>
+                     Huntly Power Station Battery Storage (Genesis Energy)
+Scope ≈ NZ$7 m | 2024–26
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_1033c1cee59eb1818e207a4a3906b11e = L.circleMarker(
+                [-36.885, 174.789],
+                {"bubblingMouseEvents": true, "color": "cadetblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "cadetblue", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+        var popup_b693b97f424667bbc212e5033e5bde2b = L.popup({"maxWidth": "100%"});
+
+        
+            var html_fabfdd2fd3957327fea69fa881816c82 = $(`<div id="html_fabfdd2fd3957327fea69fa881816c82" style="width: 100.0%; height: 100.0%;"><b>Watercare Central Interceptor</b><br><b>Company:</b> Watercare / Ghella‑Abergeldie JV<br><b>Sector:</b> Tunnel & Sewer<br><b>Opportunity size (est.):</b> NZ$30 m<br><b>Timeline:</b> 2025–26 residual mechanical fit‑out<br><b>Project CAPEX:</b> NZ$1668.0 m<br><b>RFQ/Bid:</b> Contract awarded 2019<br><b>Prime EPC:</b> Ghella‑Abergeldie<br><b>Status:</b> 14.7 km wastewater tunnel, completion 2026</div>`)[0];
+            popup_b693b97f424667bbc212e5033e5bde2b.setContent(html_fabfdd2fd3957327fea69fa881816c82);
+        
+
+        circle_marker_1033c1cee59eb1818e207a4a3906b11e.bindPopup(popup_b693b97f424667bbc212e5033e5bde2b)
+        ;
+
+        
+    
+    
+            circle_marker_1033c1cee59eb1818e207a4a3906b11e.bindTooltip(
+                `<div>
+                     Watercare Central Interceptor (Watercare / Ghella‑Abergeldie JV)
+Scope ≈ NZ$30 m | 2025–26 residual mechanical fit‑out
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_7ae225e1f513390b44905a1fc9027ce1 = L.circleMarker(
+                [-36.735, 174.71],
+                {"bubblingMouseEvents": true, "color": "cadetblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "cadetblue", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+        var popup_5078b523f880b95f7c3ddcffec794d7d = L.popup({"maxWidth": "100%"});
+
+        
+            var html_6e663d82237f8f15537e637ab609f091 = $(`<div id="html_6e663d82237f8f15537e637ab609f091" style="width: 100.0%; height: 100.0%;"><b>Rosedale WWTP Upgrade</b><br><b>Company:</b> Watercare<br><b>Sector:</b> Treatment Plant<br><b>Opportunity size (est.):</b> NZ$40 m<br><b>Timeline:</b> Design 2025; D&C 2026–28<br><b>Project CAPEX:</b> NZ$660.0 m<br><b>RFQ/Bid:</b> Design 2025; D&C 2026<br><b>Prime EPC:</b> TBC<br><b>Status:</b> 660 mℎ plant upgrade staged 2025‑30</div>`)[0];
+            popup_5078b523f880b95f7c3ddcffec794d7d.setContent(html_6e663d82237f8f15537e637ab609f091);
+        
+
+        circle_marker_7ae225e1f513390b44905a1fc9027ce1.bindPopup(popup_5078b523f880b95f7c3ddcffec794d7d)
+        ;
+
+        
+    
+    
+            circle_marker_7ae225e1f513390b44905a1fc9027ce1.bindTooltip(
+                `<div>
+                     Rosedale WWTP Upgrade (Watercare)
+Scope ≈ NZ$40 m | Design 2025; D&C 2026–28
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_64dc5768a95b03b5ee280284e242f738 = L.circleMarker(
+                [-36.988, 174.785],
+                {"bubblingMouseEvents": true, "color": "cadetblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "cadetblue", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+        var popup_9e42d9b7677c08b52dd081aa2792d1e2 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_004773803f94a5f94667c4387c8a114d = $(`<div id="html_004773803f94a5f94667c4387c8a114d" style="width: 100.0%; height: 100.0%;"><b>Mangere WWTP Programme</b><br><b>Company:</b> Watercare<br><b>Sector:</b> Treatment Plant<br><b>Opportunity size (est.):</b> NZ$50 m<br><b>Timeline:</b> 2025–34 staged works<br><b>RFQ/Bid:</b> Staged; first bids late‑2025<br><b>Prime EPC:</b> Watercare frameworks<br><b>Status:</b> Multi‑package upgrades under $13.8 bn plan (2025‑34)</div>`)[0];
+            popup_9e42d9b7677c08b52dd081aa2792d1e2.setContent(html_004773803f94a5f94667c4387c8a114d);
+        
+
+        circle_marker_64dc5768a95b03b5ee280284e242f738.bindPopup(popup_9e42d9b7677c08b52dd081aa2792d1e2)
+        ;
+
+        
+    
+    
+            circle_marker_64dc5768a95b03b5ee280284e242f738.bindTooltip(
+                `<div>
+                     Mangere WWTP Programme (Watercare)
+Scope ≈ NZ$50 m | 2025–34 staged works
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_520dc3ce2a6434b1e46ec989000152d8 = L.circleMarker(
+                [-36.813, 174.633],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+        var popup_99b87db4bf8c10f62316a24a963af345 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_cf3eb85aea4f3ded3f1ddb3e65fd6fdd = $(`<div id="html_cf3eb85aea4f3ded3f1ddb3e65fd6fdd" style="width: 100.0%; height: 100.0%;"><b>AWS Auckland Cloud Region – Westgate AZ</b><br><b>Company:</b> Amazon Web Services<br><b>Sector:</b> Hyperscale DC<br><b>Opportunity size (est.):</b> NZ$35 m<br><b>Timeline:</b> 2024–27<br><b>Project CAPEX:</b> NZ$7500.0 m<br><b>RFQ/Bid:</b> Under construction<br><b>Prime EPC:</b> Multiplex (rumoured)<br><b>Status:</b> NZ$7.5 bn region (3 AZs) – Westgate site</div>`)[0];
+            popup_99b87db4bf8c10f62316a24a963af345.setContent(html_cf3eb85aea4f3ded3f1ddb3e65fd6fdd);
+        
+
+        circle_marker_520dc3ce2a6434b1e46ec989000152d8.bindPopup(popup_99b87db4bf8c10f62316a24a963af345)
+        ;
+
+        
+    
+    
+            circle_marker_520dc3ce2a6434b1e46ec989000152d8.bindTooltip(
+                `<div>
+                     AWS Auckland Cloud Region – Westgate AZ (Amazon Web Services)
+Scope ≈ NZ$35 m | 2024–27
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_b06440bcde2666bb7b56ea8a28a94d56 = L.circleMarker(
+                [-36.813, 174.613],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+        var popup_ca1c431bcafaa6b4c79136616ca8c1cc = L.popup({"maxWidth": "100%"});
+
+        
+            var html_69f8c141ae8bd6e8f43513a257fd6617 = $(`<div id="html_69f8c141ae8bd6e8f43513a257fd6617" style="width: 100.0%; height: 100.0%;"><b>Microsoft Cloud Region – Westgate DC</b><br><b>Company:</b> Microsoft<br><b>Sector:</b> Hyperscale DC<br><b>Opportunity size (est.):</b> NZ$28 m<br><b>Timeline:</b> 2024–26<br><b>RFQ/Bid:</b> Under construction<br><b>Prime EPC:</b> Fletcher/CDC consortium<br><b>Status:</b> Three‑site region: Westgate, Hobsonville, Millwater; first site online 2025</div>`)[0];
+            popup_ca1c431bcafaa6b4c79136616ca8c1cc.setContent(html_69f8c141ae8bd6e8f43513a257fd6617);
+        
+
+        circle_marker_b06440bcde2666bb7b56ea8a28a94d56.bindPopup(popup_ca1c431bcafaa6b4c79136616ca8c1cc)
+        ;
+
+        
+    
+    
+            circle_marker_b06440bcde2666bb7b56ea8a28a94d56.bindTooltip(
+                `<div>
+                     Microsoft Cloud Region – Westgate DC (Microsoft)
+Scope ≈ NZ$28 m | 2024–26
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_06a5a3f893ebb4db9f6ebd7a09eb9e58 = L.circleMarker(
+                [-37.206, 174.744],
+                {"bubblingMouseEvents": true, "color": "cadetblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "cadetblue", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+        var popup_175eec845551594be7045eda13f2bf9a = L.popup({"maxWidth": "100%"});
+
+        
+            var html_a7f331ef214868fa29ba373ed73db89f = $(`<div id="html_a7f331ef214868fa29ba373ed73db89f" style="width: 100.0%; height: 100.0%;"><b>Waiuku Water Treatment Plant Upgrade (ROI 31001865)</b><br><b>Company:</b> Watercare Services<br><b>Sector:</b> Water Treatment<br><b>Opportunity size (est.):</b> NZ$6 m<br><b>Timeline:</b> Design 2025; construction 2026‑27<br><b>Project CAPEX:</b> NZ$25.0 m<br><b>RFQ/Bid:</b> ROI published Feb 2025; RFP Q3 2025<br><b>Prime EPC:</b> To be appointed<br><b>Status:</b> ROI open – Design services for WTP upgrade</div>`)[0];
+            popup_175eec845551594be7045eda13f2bf9a.setContent(html_a7f331ef214868fa29ba373ed73db89f);
+        
+
+        circle_marker_06a5a3f893ebb4db9f6ebd7a09eb9e58.bindPopup(popup_175eec845551594be7045eda13f2bf9a)
+        ;
+
+        
+    
+    
+            circle_marker_06a5a3f893ebb4db9f6ebd7a09eb9e58.bindTooltip(
+                `<div>
+                     Waiuku Water Treatment Plant Upgrade (ROI 31001865) (Watercare Services)
+Scope ≈ NZ$6 m | Design 2025; construction 2026‑27
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_42a42965794d163724ed81bedc652108 = L.circleMarker(
+                [-37.003, 174.845],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_118dbc79dd4cd72ce4b84f1ec1da9b0b);
+        
+    
+        var popup_61f36f43fca506c86bffb06046131809 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_b034d13847f0cc8da5edf2ec43aa55b7 = $(`<div id="html_b034d13847f0cc8da5edf2ec43aa55b7" style="width: 100.0%; height: 100.0%;"><b>KiwiRail Wiri Wagon Assembly & Maintenance Facility</b><br><b>Company:</b> KiwiRail<br><b>Sector:</b> Rail Workshop<br><b>Opportunity size (est.):</b> NZ$12 m<br><b>Timeline:</b> 2025–27<br><b>Project CAPEX:</b> NZ$60.0 m<br><b>RFQ/Bid:</b> Advance Notice Q2 2025<br><b>Prime EPC:</b> TBC<br><b>Status:</b> New facility for assembly/maintenance of wagons – GETS advance notice expected 2025</div>`)[0];
+            popup_61f36f43fca506c86bffb06046131809.setContent(html_b034d13847f0cc8da5edf2ec43aa55b7);
+        
+
+        circle_marker_42a42965794d163724ed81bedc652108.bindPopup(popup_61f36f43fca506c86bffb06046131809)
+        ;
+
+        
+    
+    
+            circle_marker_42a42965794d163724ed81bedc652108.bindTooltip(
+                `<div>
+                     KiwiRail Wiri Wagon Assembly & Maintenance Facility (KiwiRail)
+Scope ≈ NZ$12 m | 2025–27
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>
